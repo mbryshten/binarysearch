@@ -16,16 +16,12 @@ import org.junit.Test;
 public class TestBinarySearch {
 
 	private static int MAX_ARRAY_SIZE = 1000;
-	private static int MAX_NUMBER_SIZE = 1000;
 	
 	@Test
 	public void testBinarySearch() {
-		
-		BinarySearch standardBinarySearch = new StandardBinarySearch();
-		BinarySearch noIfBinarySearch = new NoIfBinarySearch();
-				
-		testBinarySearch(standardBinarySearch);
-		testBinarySearch(noIfBinarySearch);		
+			
+		testBinarySearch(new StandardBinarySearch());
+		testBinarySearch(new NoIfBinarySearch());		
 	}
 	
 	private void testBinarySearch(BinarySearch binarySearch) {
@@ -40,14 +36,15 @@ public class TestBinarySearch {
 		
 		for (int i = 0; i < lengh; i++) {
 			
-			number = random.nextInt(MAX_NUMBER_SIZE);
+			// Include both positive and negative values
+			number = random.nextInt(65536)-32768;
 			array[i] = number;		
 		}
 		
 		Arrays.sort(array);
 		
-		int randomNumber = array[random.nextInt(lengh -1)];
-		
+		// General random case
+		int randomNumber = array[random.nextInt(lengh -1)];		
 		int position = binarySearch.binSearch(array, randomNumber);
 		
 		assertTrue(array[position] == randomNumber);
@@ -76,8 +73,6 @@ public class TestBinarySearch {
 		
 		// Test array of size 1
 		position = binarySearch.binSearch(new int[]{1}, 1);
-		assertTrue(position == 0);
-		
+		assertTrue(position == 0);		
 	}
-
 }

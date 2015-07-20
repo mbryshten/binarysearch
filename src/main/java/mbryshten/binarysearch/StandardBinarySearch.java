@@ -14,6 +14,7 @@ public class StandardBinarySearch implements BinarySearch {
 		
 		int mid = (low+high)/2;
 		
+		// Iterate until we find the value or until low range shifts to the right of high range
 		while(low <= high) {
 		
 			if(arr[mid] == val) {
@@ -26,14 +27,12 @@ public class StandardBinarySearch implements BinarySearch {
 				high = mid - 1;
 			}
 			
-			mid = (low+high)/2;
-						
+			mid = (low+high)/2;						
 		}
 		
 		if(low > high) {
 			return -1;
-		}
-				
+		}				
 		return mid;
 	}
 }
