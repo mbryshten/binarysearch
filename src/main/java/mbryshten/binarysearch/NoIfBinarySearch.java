@@ -5,15 +5,22 @@ public class NoIfBinarySearch implements BinarySearch {
 	@Override
 	public int binSearch(int[] arr, int val) {
 		
-		if(arr == null || arr.length == 0) {
+		int low = 0;
+		int high = 0;
+		int mid = 0;
+		
+		int midValue = NOT_FOUND;
+		
+		try {
+		
+			high = arr.length - 1;
+			mid = (low+high)/2;					
+			midValue = arr[mid];
+		
+		
+		} catch (Exception e) {
 			return NOT_FOUND;
 		}
-		
-		int low = 0;
-		int high = arr.length - 1;
-		int mid = (low+high)/2;			
-		
-		int midValue = arr[mid];
 		
 		// Iterate until we find the value or until low range shifts to the right of high range
 		while(low <= high && midValue != val) {
